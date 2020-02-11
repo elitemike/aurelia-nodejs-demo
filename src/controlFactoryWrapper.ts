@@ -1,24 +1,15 @@
-import { BindingEngine } from "aurelia-binding";
-import { initialize } from "aurelia-pal-nodejs";
-import "aurelia-polyfills";
-import { Container, autoinject } from "aurelia-dependency-injection";
-import { configure as configureBindingLanguage } from "aurelia-templating-binding";
-import { configure as configureValidation } from "aurelia-validation";
+import { autoinject } from "aurelia-dependency-injection";
+import { ControlFactory } from "control-set-factory";
 
 @autoinject
 export class ControlFactoryWrapper {
-  constructor(
-    private bindingEngine: BindingEngine,
-    private container: Container
-  ) {
-    initialize();
-    configureBindingLanguage({ container });
-    configureValidation({ container });
-  }
-
+  private controlFactory: ControlFactory = null;
+  constructor() {}
+  // procesJson() {
+  //   console.log("cfw class", this.customControlFactory);
+  //   return this.customControlFactory;
+  // }
   procesJson() {
-    // console.log("cfw class", this.customControlFactory);
-    // return this.customControlFactory;
-    return "processed";
+    return this;
   }
 }
